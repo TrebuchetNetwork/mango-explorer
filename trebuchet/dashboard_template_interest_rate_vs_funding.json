@@ -1,0 +1,1229 @@
+{
+ "meta": {
+  "version": "1",
+  "type": "dashboard",
+  "name": "Interest rate vs funding-Template",
+  "description": "template created from dashboard: Interest rate vs funding"
+ },
+ "content": {
+  "data": {
+   "type": "dashboard",
+   "attributes": {
+    "name": "Interest rate vs funding",
+    "description": ""
+   },
+   "relationships": {
+    "label": {
+     "data": []
+    },
+    "cell": {
+     "data": [
+      {
+       "type": "cell",
+       "id": "097fdf4152536000"
+      },
+      {
+       "type": "cell",
+       "id": "097ff52a57536000"
+      },
+      {
+       "type": "cell",
+       "id": "0980e1733b136000"
+      },
+      {
+       "type": "cell",
+       "id": "0980e1d442536000"
+      },
+      {
+       "type": "cell",
+       "id": "0980e2c071136000"
+      },
+      {
+       "type": "cell",
+       "id": "0981124f28136000"
+      },
+      {
+       "type": "cell",
+       "id": "098112a9ea936000"
+      },
+      {
+       "type": "cell",
+       "id": "098153f6e3536000"
+      },
+      {
+       "type": "cell",
+       "id": "098154b08f136000"
+      }
+     ]
+    },
+    "variable": {
+     "data": []
+    }
+   }
+  },
+  "included": [
+   {
+    "id": "097fdf4152536000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 14,
+     "w": 6,
+     "h": 2
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "097fdf4152536000"
+      }
+     }
+    }
+   },
+   {
+    "id": "097ff52a57536000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 0,
+     "w": 6,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "097ff52a57536000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0980e1733b136000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 16,
+     "w": 6,
+     "h": 2
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0980e1733b136000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0980e1d442536000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 18,
+     "w": 6,
+     "h": 2
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0980e1d442536000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0980e2c071136000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 20,
+     "w": 6,
+     "h": 2
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0980e2c071136000"
+      }
+     }
+    }
+   },
+   {
+    "id": "0981124f28136000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 6,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "0981124f28136000"
+      }
+     }
+    }
+   },
+   {
+    "id": "098112a9ea936000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 6,
+     "w": 6,
+     "h": 8
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "098112a9ea936000"
+      }
+     }
+    }
+   },
+   {
+    "id": "098153f6e3536000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 12,
+     "w": 6,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "098153f6e3536000"
+      }
+     }
+    }
+   },
+   {
+    "id": "098154b08f136000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 6,
+     "w": 6,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "098154b08f136000"
+      }
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "097fdf4152536000",
+    "attributes": {
+     "name": "Borrow Rates",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"interest-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"borrow\")\n  |> filter(fn: (r) => r[\"symbol\"] == \"USDC\" or r[\"symbol\"] == \"SOL\" or r[\"symbol\"] == \"SRM\" or r[\"symbol\"] == \"RAY\" or r[\"symbol\"] == \"MSOL\" or r[\"symbol\"] == \"MNGO\" or r[\"symbol\"] == \"FTT\" or r[\"symbol\"] == \"ETH\" or r[\"symbol\"] == \"COPE\" or r[\"symbol\"] == \"BTC\" or r[\"symbol\"] == \"BNB\" or r[\"symbol\"] == \"AVAX\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "097ff52a57536000",
+    "attributes": {
+     "name": "Funding APY",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"apy\")\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0980e1733b136000",
+    "attributes": {
+     "name": "Deposit Rates",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"interest-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"deposit\")\n  |> filter(fn: (r) => r[\"symbol\"] == \"USDC\" or r[\"symbol\"] == \"SOL\" or r[\"symbol\"] == \"SRM\" or r[\"symbol\"] == \"RAY\" or r[\"symbol\"] == \"MSOL\" or r[\"symbol\"] == \"MNGO\" or r[\"symbol\"] == \"FTT\" or r[\"symbol\"] == \"ETH\" or r[\"symbol\"] == \"COPE\" or r[\"symbol\"] == \"BTC\" or r[\"symbol\"] == \"BNB\" or r[\"symbol\"] == \"AVAX\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0980e1d442536000",
+    "attributes": {
+     "name": "Funding APR",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"apr\")\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0980e2c071136000",
+    "attributes": {
+     "name": "Spread %",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n    |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n    |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n    |> pivot(rowKey: [\"_time\",\"market\"], columnKey: [\"_field\"], valueColumn: \"_value\")\n    |> map(fn: (r) => ({r with _value: (r.spread / r.oracle_price) * 100.0}))\n    |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n    |> yield(name: \"mean\")\n",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "0981124f28136000",
+    "attributes": {
+     "name": "ADA Perp Oracle price",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"mid_price\" or r[\"_field\"] == \"oracle_price\")\n  |> filter(fn: (r) => r[\"market\"] == \"MNGO-PERP\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "079c6900-2ec8-4901-bd99-8d07f9872237",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "c9aa5ca4-4dbe-409f-8ed0-5526661868a1",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "e8973cd4-676c-4517-8a42-6ec674b9dd3e",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "098112a9ea936000",
+    "attributes": {
+     "name": "SOL Perp vs Oracle price",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"oracle_price\" or r[\"_field\"] == \"mid_price\")\n  |> filter(fn: (r) => r[\"market\"] == \"SOL-PERP\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "098153f6e3536000",
+    "attributes": {
+     "name": "Funding APY (Clone)",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"interest-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"borrow\" or r[\"_field\"] == \"deposit\")\n  |> filter(fn: (r) => r[\"symbol\"] == \"SOL\")\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "098154b08f136000",
+    "attributes": {
+     "name": "Funding APY (Clone)",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"my-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"funding-rates\")\n  |> filter(fn: (r) => r[\"_field\"] == \"apy\")\n  |> filter(fn: (r) => r[\"market\"] == \"BTC-PERP\" or r[\"market\"] == \"SOL-PERP\")\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "e3f2d3a6-1db5-4f80-a325-596854df6592",
+        "type": "scale",
+        "hex": "#31C0F6",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "98403e92-55fb-4a7f-bac9-6e97691b52a9",
+        "type": "scale",
+        "hex": "#A500A5",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       },
+       {
+        "id": "3d0e1635-74d4-4a2c-9dad-2e940d36321c",
+        "type": "scale",
+        "hex": "#FF7E27",
+        "name": "Nineteen Eighty Four",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": false,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   }
+  ]
+ },
+ "labels": []
+}
