@@ -55,14 +55,31 @@ sudo docker run -p 8086:8086 \
 In the UI import dashboard on localhost:8086
 
 
-8) Run the Jupter lab docker file in a new window
+8) Run the Jupyter lab docker file in a new window. Adjust the input folder to trebuchet/lab
+
+Run with Nvidia CUDA gpu support
 ```
-insert docker code with GPU support and without GPU support 
+ sudo docker run --gpus all --rm -it -p 8888:8888 \
+  -p 8787:8787 -p 8786:8786 \
+   -e EXTRA_PIP_PACKAGES="influxdb-client cassandra-driver ccxt" \
+   --network="host"  -v lab:/rapids/lab rapidsai/rapidsai-dev:21.06-cuda11.2-devel-ubuntu20.04-py3.8 
+
+ 
 ```
+Run without Nvidia CUDA gpu support 
+
+```
+ sudo docker run --rm -it -p 8888:8888 \
+  -p 8787:8787 -p 8786:8786 \
+   -e EXTRA_PIP_PACKAGES="influxdb-client cassandra-driver ccxt" \
+   --network="host"  -v lab:/rapids/lab rapidsai/rapidsai-dev:21.06-cuda11.2-devel-ubuntu20.04-py3.8 
+
+```
+
 
 9) Example code can be found in 
-/trebuchet/train
+/trebuchet/lab
 
-10) Access the LAB on ... .
+10) Access the LAB on localhost:8888
 
 Enjoy!
