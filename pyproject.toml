@@ -26,6 +26,7 @@ rxpy-backpressure = "^1.0.0"
 solana = "^0.21.0"
 websocket-client = "^1.2.1"
 zstandard = "^0.17.0"
+influxdb-client = "^1.30.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
