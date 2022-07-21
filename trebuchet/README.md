@@ -5,7 +5,10 @@
 
 #### [optional] Run train/inference with or without GPU support (Nvidia Cuda)
 Requirements:
-* For GPU option - CUDA 11 GPU support 
+* For GPU option - CUDA 11 Nvidia 
+* 12 GB RAM 
+* 8 Cores
+* 15 GB bandwith for docker images
 
 
 ## Setup
