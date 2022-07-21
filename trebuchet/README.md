@@ -16,7 +16,7 @@ Requirements:
 
 2) Get default config 
 
-`sudo docker run --rm influxdb:2.3 influxdb print-config > config.yml`
+`sudo docker run --rm influxdb:2.3 influxd print-config > config.yml`
 
 
 
