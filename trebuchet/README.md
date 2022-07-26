@@ -5,7 +5,10 @@
 
 #### [optional] Run train/inference with or without GPU support (Nvidia Cuda)
 Requirements:
-* For GPU option - CUDA 11 GPU support 
+* For GPU option - CUDA 11 Nvidia 
+* 12 GB RAM 
+* 8 Cores
+* 15 GB bandwith for docker images
 
 
 ## Setup
@@ -16,7 +19,7 @@ Requirements:
 
 2) Get default config 
 
-`sudo docker run --rm influxdb:2.3 influxdb print-config > config.yml`
+`sudo docker run --rm influxdb:2.3 influxd print-config > config.yml`
 
 
 
