@@ -86,9 +86,6 @@ while True:
                         #get restart logic in place
 
 
-                except:
-                    print("Something else went wrong")
-
     except Exception as ex:
         print(str(ex))
 
