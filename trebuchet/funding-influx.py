@@ -56,8 +56,9 @@ while True:
 
             while (True):
                 try:
-                    time.sleep(5)
+                    time.sleep(2)
                     for perpi in perp_markets_list:
+                        time.sleep(2)
                         funding = perpi.fetch_funding(context)
                         orderbook = perpi.fetch_orderbook(context)
                         p = Point("funding-rates").tag("market", perpi.symbol)
@@ -81,11 +82,10 @@ while True:
                         write_api.write(bucket=bucket, record=p)
                 except Exception as e:
                         print("Oops!", e.__class__, "occurred.")
+                        raise Exception("Sorry, no numbers below zero")
                         #get restart logic in place
-                        time.sleep(10)
-                        for perp_temp in perps:
-                            perp_market = mango.PerpMarket.ensure(mango.market(context, perp_temp))
-                            perp_markets_list.append(perp_market)
+
+
                 except:
                     print("Something else went wrong")
 
